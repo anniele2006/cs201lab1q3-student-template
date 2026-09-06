@@ -136,7 +136,6 @@ public class DoublyLinkedList<E> {
                     current.setNext(after);
                     after.setPrev(current);
 
-
                 }
                 nullTail = current;
             }
