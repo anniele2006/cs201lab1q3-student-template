@@ -32,6 +32,7 @@ public class DoublyLinkedList<E> {
         }
     }
 
+
     private Node<E> header;
     private Node<E> trailer;
     private int size = 0;
@@ -114,7 +115,7 @@ public class DoublyLinkedList<E> {
         return sb.toString();
     }
 
-    public void group(){
+    public void group() {
         Node<E> current = header.getNext();
         Node<E> nullTail = header;
 
@@ -122,14 +123,18 @@ public class DoublyLinkedList<E> {
             Node<E> next = current.getNext();
             Node<E> prev = current.getPrev();
 
-            if(current.getElement() == null) {
+            if(current.getElement() == null) { //check if null, if not next (keeps original order)
 
+                // header null null 2 is fine, solves first check
                 if (current != nullTail.getNext()) {
+                    // take out current null
                     prev.setNext(next);
                     next.setPrev(prev);
 
+                    //save node that comes after null group
                     Node<E> after = nullTail.getNext();
 
+                    //insert current null after null tail
                     nullTail.setNext(current);
                     current.setPrev(nullTail);
 
@@ -137,8 +142,11 @@ public class DoublyLinkedList<E> {
                     after.setPrev(current);
 
                 }
+                //current is now last null so null tail in the grouped null
                 nullTail = current;
             }
+
+            //traverse to next original node
             current = next;
 
         }
