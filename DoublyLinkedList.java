@@ -149,7 +149,7 @@ public class DoublyLinkedList<E> {
             //traverse to next original node
             current = next;
 
-        }
+        } //trial push pt xxxx
     }
 
     
